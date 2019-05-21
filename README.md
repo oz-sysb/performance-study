@@ -1,27 +1,52 @@
 # 目的
 
-CSV ダウンロード機能を実装する上で、ファイルサイズが大きくなればなるほど
-通常メモリの消費が大きくなってくる
+パフォーマンス改善の勉強のサンプルコード
+この処理を性能改善して、CSV ダウンロードが問題なくできるようにしたい
 
-どれだけファイルサイズが大きくなっても、メモリの問題を回避して実装する方法を検証するためのスクリプトを作ってみた
+# 起動
 
-# 前提
-
-vagrant, virtualbox がインストールされている環境であること
-
-# vagrant 起動方法
 
 ```
-git clone https://github.com/oz-urabe/qiita-for-csv-download.git
-cd qiita-for-csv-download
-vagrant up --provision
+# docker 起動
+$ open -a Docker
+
+# 初回のみ実行
+$ docker compose build --no-cache
+
+# 起動 (終了は docker compose down )
+$ docker compose up -d
+
+# 以下で大量データ読み込み - 4 回実行 - 2000万レコード：1回500万レコード
+$ docker compose exec db /script/first-setup.sh
 ```
+
+
+# 確認
+
+
+
+# ログ確認
+
+tail で流れます
+
+
+```
+docker compose logs -f
+```
+
 
 # 動作確認方法
 
-ブラウザで http://10.0.0.10 にアクセス
+[http://localhost:18888](http://localhost:18888)
 
-- 取り急ぎ実装したバージョン
+- 修正が必要なバージョン
     - 該当ソースコード: src/csv-download.php
-- メモリリミットが起きないように回避したバージョン
-    - 該当ソースコード: src/csv-download-tuned.php
+- 修正するポイント
+       - 500 万レコードのダウンロードでメモリリミットエラーがでないようにする
+       - 500 万レコードのダウンロードでタイムアウトが起きないようにする
+
+# License
+
+These codes are licensed under CC0.
+
+[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png "CC0")](http://creativecommons.org/publicdomain/zero/1.0/deed.ja)

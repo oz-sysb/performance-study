@@ -18,18 +18,10 @@
   <div class="container">
     <div class="jumbotron mt-3">
       <h1>CSV ダウンロード</h1>
-      <p class="lead">取り急ぎ実装したバージョン</p>
+      <p class="lead">修正お願いしますバージョン</p>
       <form action="./csv-download.php" method="get" id="normal">
-      <p>行数上限: <input type="number" name="limit" value="10000" /></p>
+      <p>行数上限: <input type="number" name="limit" value="5000000" /></p>
       <a class="btn btn-lg btn-primary" href="javascript:void(0);" onclick="$('#normal').submit()" role="button">ダウンロード &raquo;</a>
-      </form>
-    </div>
-    <div class="jumbotron mt-3">
-      <h1>CSV ダウンロード</h1>
-      <form action="./csv-download-tuned.php" method="get" id="tuned">
-      <p class="lead">メモリリミットが起きないように回避したバージョン</p>
-      <p>行数上限: <input type="number" name="limit" value="10000" /></p>
-      <a class="btn btn-lg btn-primary" href="javascript:void(0);" onclick="$('#tuned').submit()" role="button">ダウンロード &raquo;</a>
       </form>
     </div>
   </div>
