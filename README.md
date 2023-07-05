@@ -16,7 +16,7 @@ $ docker compose build --no-cache
 # 起動 (終了は docker compose down )
 $ docker compose up -d
 
-# 以下で大量データ読み込み - 4 回実行 - 2000万レコード：1回500万レコード
+# 以下で大量データ読み込み - 500万レコード
 $ docker compose exec db /script/first-setup.sh
 ```
 
